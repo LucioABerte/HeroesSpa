@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import { Navigate, useNavigate, useParams } from 'react-router-dom'
 import { getHeroById } from '../helpers'
 
@@ -8,14 +8,13 @@ export const HeroPage = () => {
 
   const { id }= useParams()
 
-  const hero = getHeroById( id )
+  const hero = useMemo( () => getHeroById( id ), [id] )
 
   const onNavigateBack = () => {
     navigate(-1)
   }
 
   if( !hero ) {
-    
     return <Navigate to="/marvel" />
   }
  
@@ -25,10 +24,10 @@ export const HeroPage = () => {
         <img 
             src={`/assets/heroes/${ id }.jpg`} 
             alt={hero.superhero}
-            className="img-thumbnail" />
+            className="img-thumbnail animate__animated animate__fadeInLeft" />
       </div>
 
-      <div className="col-8">
+      <div className="col-8 animate__animated animate__fadeInRight">
         <h3>{hero.superhero}</h3>
         <ul className="list-group  list-group-flush">
           <li className="list-group-item"><b>Alter Ego:</b> {hero.alter_ego} </li>
