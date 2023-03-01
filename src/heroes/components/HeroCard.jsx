@@ -8,7 +8,7 @@ export const CharactersByHero = ({alter_ego, characters}) => {
     : <p>{characters}</p>
 }
 
-const HeroCard = ({id, superhero, publisher, alter_ego, first_appearance, characters}) => {
+export const HeroCard = ({id, superhero, publisher, alter_ego, first_appearance, characters}) => {
 
     const heroImageUrl = `/assets/heroes/${id}.jpg`
 
@@ -41,4 +41,3 @@ const HeroCard = ({id, superhero, publisher, alter_ego, first_appearance, charac
   )
 }
 
-export default HeroCard
